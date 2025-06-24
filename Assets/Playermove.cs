@@ -19,6 +19,8 @@ public class Playermove : MonoBehaviour
 
     public Vector3 warpDestination;
 
+    private int itemPoint = 0;
+    int score = 0;
 
     void Update()
     {
@@ -76,5 +78,14 @@ public class Playermove : MonoBehaviour
         }
         return nearest;
     }
-    
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            Destroy(other.gameObject);
+            itemPoint += 1;
+        }
     }
+
+}
